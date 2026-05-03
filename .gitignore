@@ -1,0 +1,23 @@
+# .NET
+**/bin/
+**/obj/
+*.user
+*.suo
+**/.vs/
+logs/
+*.db
+**/appsettings.Production.json
+**/appsettings.Development.json
+
+# Node
+node_modules/
+.next/
+dist/
+.cache/
+*.env.local
+*.env.production
+
+# IDE
+.idea/
+.vscode/
+*.swp
