@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #f43f5e;
+  --color-primary-light: #fb7185;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
