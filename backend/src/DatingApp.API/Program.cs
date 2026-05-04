@@ -39,6 +39,24 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapHub<ChatHub>("/hubs/chat");
 
+using (var scope = app.Services.CreateScope())
+{
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        logger.LogInformation("Applying database migrations...");
+        await db.Database.MigrateAsync();
+        logger.LogInformation("Migrations applied successfully.");
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Migration failed — check connection string and database.");
+        throw; // Arrêter le démarrage si la DB est inaccessible
+    }
+}
+
+// Swagger uniquement en dev
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
