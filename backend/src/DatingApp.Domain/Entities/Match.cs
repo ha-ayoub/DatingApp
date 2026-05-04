@@ -5,15 +5,15 @@ namespace DatingApp.Domain.Entities;
 
 public class Match : BaseEntity
 {
-    private Match() { }
+    public Match() { }
 
-    public Guid User1Id { get; private set; }
-    public Guid User2Id { get; private set; }
-    public bool IsActive { get; private set; } = true;
+    public Guid User1Id { get; set; }
+    public Guid User2Id { get; set; }
+    public bool IsActive { get; set; } = true;
 
-    public User User1 { get; private set; } = null!;
-    public User User2 { get; private set; } = null!;
-    public ICollection<Message> Messages { get; private set; } = [];
+    public User User1 { get; set; } = null!;
+    public User User2 { get; set; } = null!;
+    public ICollection<Message> Messages { get; set; } = [];
 
     public static Match Create(Guid user1Id, Guid user2Id)
     {

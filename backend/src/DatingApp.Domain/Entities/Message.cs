@@ -4,16 +4,16 @@ namespace DatingApp.Domain.Entities;
 
 public class Message : BaseEntity
 {
-    private Message() { }
+    public Message() { }
 
-    public Guid MatchId { get; private set; }
-    public Guid SenderId { get; private set; }
-    public string Content { get; private set; } = string.Empty;
-    public bool IsRead { get; private set; }
-    public DateTime? ReadAt { get; private set; }
+    public Guid MatchId { get; set; }
+    public Guid SenderId { get; set; }
+    public string Content { get; set; } = string.Empty;
+    public bool IsRead { get; set; }
+    public DateTime? ReadAt { get; set; }
 
-    public Match Match { get; private set; } = null!;
-    public User Sender { get; private set; } = null!;
+    public Match Match { get; set; } = null!;
+    public User Sender { get; set; } = null!;
 
     public static Message Create(Guid matchId, Guid senderId, string content)
         => new() { MatchId = matchId, SenderId = senderId, Content = content };

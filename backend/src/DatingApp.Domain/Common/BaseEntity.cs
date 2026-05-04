@@ -3,8 +3,8 @@ namespace DatingApp.Domain.Common;
 public abstract class BaseEntity
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
-    public DateTime? UpdatedAt { get; protected set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
 
     private readonly List<IDomainEvent> _domainEvents = [];
     public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();

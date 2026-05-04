@@ -5,14 +5,14 @@ namespace DatingApp.Domain.Entities;
 
 public class Swipe : BaseEntity
 {
-    private Swipe() { }
+    public Swipe() { }
 
-    public Guid SwiperId { get; private set; }
-    public Guid SwipedId { get; private set; }
-    public SwipeDirection Direction { get; private set; }
+    public Guid SwiperId { get; set; }
+    public Guid SwipedId { get; set; }
+    public SwipeDirection Direction { get; set; }
 
-    public User Swiper { get; private set; } = null!;
-    public User Swiped { get; private set; } = null!;
+    public User Swiper { get; set; } = null!;
+    public User Swiped { get; set; } = null!;
 
     public static Swipe Create(Guid swiperId, Guid swipedId, SwipeDirection direction)
         => new() { SwiperId = swiperId, SwipedId = swipedId, Direction = direction };

@@ -1,9 +1,10 @@
+using DatingApp.API.Extensions;
+using DatingApp.API.Middleware;
 using DatingApp.Application;
 using DatingApp.Infrastructure;
 using DatingApp.Infrastructure.Hubs;
 using DatingApp.Infrastructure.Persistence;
-using DatingApp.API.Middleware;
-using DatingApp.API.Extensions;
+using DatingApp.Infrastructure.Persistence.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -48,6 +49,9 @@ using (var scope = app.Services.CreateScope())
         logger.LogInformation("Applying database migrations...");
         await db.Database.MigrateAsync();
         logger.LogInformation("Migrations applied successfully.");
+
+        var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+        await seeder.SeedAsync();
     }
     catch (Exception ex)
     {

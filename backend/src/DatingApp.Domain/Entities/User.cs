@@ -6,36 +6,36 @@ namespace DatingApp.Domain.Entities;
 
 public class User : BaseEntity
 {
-    private User() { } // EF Core
+    public User() { } // EF Core
 
-    public string Email { get; private set; } = string.Empty;
-    public string PasswordHash { get; private set; } = string.Empty;
-    public string FirstName { get; private set; } = string.Empty;
-    public string LastName { get; private set; } = string.Empty;
-    public DateOnly DateOfBirth { get; private set; }
-    public Gender Gender { get; private set; }
-    public string? Bio { get; private set; }
-    public string? City { get; private set; }
-    public string? Country { get; private set; }
-    public double? Latitude { get; private set; }
-    public double? Longitude { get; private set; }
-    public int MinAgePreference { get; private set; } = 18;
-    public int MaxAgePreference { get; private set; } = 99;
-    public int MaxDistanceKm { get; private set; } = 100;
-    public List<Gender> GenderPreferences { get; private set; } = [];
-    public bool IsActive { get; private set; } = true;
-    public bool IsVerified { get; private set; }
-    public DateTime? LastActiveAt { get; private set; }
-    public UserRole Role { get; private set; } = UserRole.User;
-    public string? RefreshToken { get; private set; }
-    public DateTime? RefreshTokenExpiresAt { get; private set; }
+    public string Email { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public DateOnly DateOfBirth { get; set; }
+    public Gender Gender { get; set; }
+    public string? Bio { get; set; }
+    public string? City { get; set; }
+    public string? Country { get; set; }
+    public double? Latitude { get; set; }
+    public double? Longitude { get; set; }
+    public int MinAgePreference { get; set; } = 18;
+    public int MaxAgePreference { get; set; } = 99;
+    public int MaxDistanceKm { get; set; } = 100;
+    public List<Gender> GenderPreferences { get; set; } = [];
+    public bool IsActive { get; set; } = true;
+    public bool IsVerified { get; set; }
+    public DateTime? LastActiveAt { get; set; }
+    public UserRole Role { get; set; } = UserRole.User;
+    public string? RefreshToken { get; set; }
+    public DateTime? RefreshTokenExpiresAt { get; set; }
 
-    public ICollection<Photo> Photos { get; private set; } = [];
-    public ICollection<Swipe> SentSwipes { get; private set; } = [];
-    public ICollection<Swipe> ReceivedSwipes { get; private set; } = [];
-    public ICollection<Match> Matches { get; private set; } = [];
-    public ICollection<UserBlock> BlockedUsers { get; private set; } = [];
-    public ICollection<Report> Reports { get; private set; } = [];
+    public ICollection<Photo> Photos { get; set; } = [];
+    public ICollection<Swipe> SentSwipes { get; set; } = [];
+    public ICollection<Swipe> ReceivedSwipes { get; set; } = [];
+    public ICollection<Match> Matches { get; set; } = [];
+    public ICollection<UserBlock> BlockedUsers { get; set; } = [];
+    public ICollection<Report> Reports { get; set; } = [];
 
     public int Age => CalculateAge(DateOfBirth);
     public Photo? MainPhoto => Photos.FirstOrDefault(p => p.IsMain);

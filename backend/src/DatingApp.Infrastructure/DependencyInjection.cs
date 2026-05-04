@@ -4,6 +4,7 @@ using DatingApp.Infrastructure.Hubs;
 using DatingApp.Infrastructure.Identity;
 using DatingApp.Infrastructure.Persistence;
 using DatingApp.Infrastructure.Persistence.Repositories;
+using DatingApp.Infrastructure.Persistence.Seeders;
 using DatingApp.Infrastructure.Services;
 using DatingApp.Infrastructure.Services.Cache;
 using DatingApp.Infrastructure.Services.External;
@@ -38,6 +39,7 @@ public static class DependencyInjection
         services.AddHttpContextAccessor();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<IPhotoRepository, PhotoRepository>();
+        services.AddScoped<DataSeeder>();
         services.AddSignalR();
 
         return services;
